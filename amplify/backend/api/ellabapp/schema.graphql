@@ -1,10 +1,14 @@
-input AMPLIFY {
-  globalAuthRule: AuthRule = {allow: public}
+type Package @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  size: String
+  cost: Float
 }
 
-type Note @model @auth(rules: [ { allow: public } ] ){
+type Note @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
   description: String
   image: String
 }
+ 

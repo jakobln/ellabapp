@@ -35,5 +35,7 @@ export { default as NavBar } from "./NavBar";
 export { default as EditProfile } from "./EditProfile";
 export { default as ProductCard } from "./ProductCard";
 export { default as studioTheme } from "./studioTheme";
+export { default as PackageCreateForm } from "./PackageCreateForm";
+export { default as PackageUpdateForm } from "./PackageUpdateForm";
 export { default as NoteCreateForm } from "./NoteCreateForm";
 export { default as NoteUpdateForm } from "./NoteUpdateForm";

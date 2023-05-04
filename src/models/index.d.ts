@@ -6,6 +6,38 @@ import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
 
 
 
+type EagerPackage = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Package, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly name?: string | null;
+  readonly size?: string | null;
+  readonly cost?: number | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyPackage = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Package, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly name?: string | null;
+  readonly size?: string | null;
+  readonly cost?: number | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Package = LazyLoading extends LazyLoadingDisabled ? EagerPackage : LazyPackage
+
+export declare const Package: (new (init: ModelInit<Package>) => Package) & {
+  copyOf(source: Package, mutator: (draft: MutableModel<Package>) => MutableModel<Package> | void): Package;
+}
+
 type EagerNote = {
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<Note, 'id'>;
