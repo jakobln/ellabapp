@@ -1,12 +1,12 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createPackage = /* GraphQL */ `
-  mutation CreatePackage(
-    $input: CreatePackageInput!
-    $condition: ModelPackageConditionInput
+export const createBundle = /* GraphQL */ `
+  mutation CreateBundle(
+    $input: CreateBundleInput!
+    $condition: ModelBundleConditionInput
   ) {
-    createPackage(input: $input, condition: $condition) {
+    createBundle(input: $input, condition: $condition) {
       id
       name
       size
@@ -19,12 +19,12 @@ export const createPackage = /* GraphQL */ `
     }
   }
 `;
-export const updatePackage = /* GraphQL */ `
-  mutation UpdatePackage(
-    $input: UpdatePackageInput!
-    $condition: ModelPackageConditionInput
+export const updateBundle = /* GraphQL */ `
+  mutation UpdateBundle(
+    $input: UpdateBundleInput!
+    $condition: ModelBundleConditionInput
   ) {
-    updatePackage(input: $input, condition: $condition) {
+    updateBundle(input: $input, condition: $condition) {
       id
       name
       size
@@ -37,12 +37,12 @@ export const updatePackage = /* GraphQL */ `
     }
   }
 `;
-export const deletePackage = /* GraphQL */ `
-  mutation DeletePackage(
-    $input: DeletePackageInput!
-    $condition: ModelPackageConditionInput
+export const deleteBundle = /* GraphQL */ `
+  mutation DeleteBundle(
+    $input: DeleteBundleInput!
+    $condition: ModelBundleConditionInput
   ) {
-    deletePackage(input: $input, condition: $condition) {
+    deleteBundle(input: $input, condition: $condition) {
       id
       name
       size

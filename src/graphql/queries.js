@@ -1,9 +1,9 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getPackage = /* GraphQL */ `
-  query GetPackage($id: ID!) {
-    getPackage(id: $id) {
+export const getBundle = /* GraphQL */ `
+  query GetBundle($id: ID!) {
+    getBundle(id: $id) {
       id
       name
       size
@@ -16,13 +16,13 @@ export const getPackage = /* GraphQL */ `
     }
   }
 `;
-export const listPackages = /* GraphQL */ `
-  query ListPackages(
-    $filter: ModelPackageFilterInput
+export const listBundles = /* GraphQL */ `
+  query ListBundles(
+    $filter: ModelBundleFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listPackages(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listBundles(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         name
@@ -39,14 +39,14 @@ export const listPackages = /* GraphQL */ `
     }
   }
 `;
-export const syncPackages = /* GraphQL */ `
-  query SyncPackages(
-    $filter: ModelPackageFilterInput
+export const syncBundles = /* GraphQL */ `
+  query SyncBundles(
+    $filter: ModelBundleFilterInput
     $limit: Int
     $nextToken: String
     $lastSync: AWSTimestamp
   ) {
-    syncPackages(
+    syncBundles(
       filter: $filter
       limit: $limit
       nextToken: $nextToken

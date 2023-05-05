@@ -17,13 +17,25 @@ import {
   createNote as createNoteMutation,
   deleteNote as deleteNoteMutation,
 } from "./graphql/mutations";
+/* import { listPackages } from "./graphql/queries";
+import {
+  createPackage as createPackageMutation,
+  deletePackage as deletePackageMutation,
+} from "./graphql/mutations"; */
 
 const App = ({ signOut }) => {
   const [notes, setNotes] = useState([]);
 
+/*   const App = ({ signOut }) => {
+    const [packages, setPackages] = useState([]); */
+
   useEffect(() => {
     fetchNotes();
   }, []);
+
+/*   useEffect(() => {
+    fetchPackages();
+  }, []); */
 
   async function fetchNotes() {
     const apiData = await API.graphql({ query: listNotes });
@@ -39,6 +51,12 @@ const App = ({ signOut }) => {
     );
     setNotes(notesFromAPI);
   }
+
+/*   async function fetchPackages() {
+    const apiData = await API.graphql({ query: listPackages });
+    const packagesFromAPI = apiData.data.listPackages.items;
+    setPackages(packagesFromAPI);
+  } */
 
   async function createNote(event) {
     event.preventDefault();
@@ -58,6 +76,21 @@ const App = ({ signOut }) => {
     event.target.reset();
   }
 
+/*   async function createPackage(event) {
+    event.preventDefault();
+    const form = new FormData(event.target);
+    const data = {
+      name: form.get("name"),
+      size: form.get("size"),
+    };
+    await API.graphql({
+      query: createPackageMutation,
+      variables: { input: data },
+    });
+    fetchPackages();
+    event.target.reset();
+  } */
+
   async function deleteNote({ id, name }) {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
@@ -67,6 +100,15 @@ const App = ({ signOut }) => {
       variables: { input: { id } },
     });
   }
+
+/*   async function deletePackage({ id }) {
+    const newPackages = packages.filter((package) => package.id !== id);
+    setPackages(newPackages);
+    await API.graphql({
+      query: deletePackageMutation,
+      variables: { input: { id } },
+    });
+  } */
 
   return (
     <View className="App">
@@ -130,5 +172,55 @@ const App = ({ signOut }) => {
     </View>
   );
 };
+
+/* 
+  return (
+    <View className="App">
+      <Heading level={1}>My Packages App</Heading>
+      <View as="form" margin="3rem 0" onSubmit={createPackage}>
+        <Flex direction="row" justifyContent="center">
+          <TextField
+            name="name"
+            placeholder="Package Name"
+            label="Package Name"
+            labelHidden
+            variation="quiet"
+            required
+          />
+          <TextField
+            name="size"
+            placeholder="Package Size"
+            label="Package Size"
+            labelHidden
+            variation="quiet"
+          />
+          <Button type="submit" variation="primary">
+            Create Package
+          </Button>
+        </Flex>
+      </View>
+      <Heading level={2}>Current Packages</Heading>
+      <View margin="3rem 0">
+        {packages.map((package) => (
+          <Flex
+            key={package.id || package.name}
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Text as="strong" fontWeight={700}>
+              {package.name}
+            </Text>
+            <Text as="span">{package.size}</Text>
+            <Button variation="link" onClick={() => deletePackage(package)}>
+              Delete package
+            </Button>
+          </Flex>
+        ))}
+      </View>
+      <Button onClick={signOut}>Sign Out</Button>
+    </View>
+  );
+}; */
 
 export default withAuthenticator(App);

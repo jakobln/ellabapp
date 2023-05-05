@@ -1,7 +1,7 @@
 export const schema = {
     "models": {
-        "Package": {
-            "name": "Package",
+        "Bundle": {
+            "name": "Bundle",
             "fields": {
                 "id": {
                     "name": "id",
@@ -49,7 +49,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "Packages",
+            "pluralName": "Bundles",
             "attributes": [
                 {
                     "type": "model",
@@ -150,5 +150,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.6",
-    "version": "da602270e63394b4cd18c253e43349bb"
+    "version": "39e9c3d13d8653b6aa97725b9c73e444"
 };

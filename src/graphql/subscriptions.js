@@ -1,9 +1,9 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreatePackage = /* GraphQL */ `
-  subscription OnCreatePackage($filter: ModelSubscriptionPackageFilterInput) {
-    onCreatePackage(filter: $filter) {
+export const onCreateBundle = /* GraphQL */ `
+  subscription OnCreateBundle($filter: ModelSubscriptionBundleFilterInput) {
+    onCreateBundle(filter: $filter) {
       id
       name
       size
@@ -16,9 +16,9 @@ export const onCreatePackage = /* GraphQL */ `
     }
   }
 `;
-export const onUpdatePackage = /* GraphQL */ `
-  subscription OnUpdatePackage($filter: ModelSubscriptionPackageFilterInput) {
-    onUpdatePackage(filter: $filter) {
+export const onUpdateBundle = /* GraphQL */ `
+  subscription OnUpdateBundle($filter: ModelSubscriptionBundleFilterInput) {
+    onUpdateBundle(filter: $filter) {
       id
       name
       size
@@ -31,9 +31,9 @@ export const onUpdatePackage = /* GraphQL */ `
     }
   }
 `;
-export const onDeletePackage = /* GraphQL */ `
-  subscription OnDeletePackage($filter: ModelSubscriptionPackageFilterInput) {
-    onDeletePackage(filter: $filter) {
+export const onDeleteBundle = /* GraphQL */ `
+  subscription OnDeleteBundle($filter: ModelSubscriptionBundleFilterInput) {
+    onDeleteBundle(filter: $filter) {
       id
       name
       size
