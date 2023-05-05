@@ -17,24 +17,24 @@ import {
   createNote as createNoteMutation,
   deleteNote as deleteNoteMutation,
 } from "./graphql/mutations";
-/* import { listPackages } from "./graphql/queries";
+/* import { listBundles } from "./graphql/queries";
 import {
-  createPackage as createPackageMutation,
-  deletePackage as deletePackageMutation,
+  createBundle as createBundleMutation,
+  deleteBundle as deleteBundleMutation,
 } from "./graphql/mutations"; */
 
 const App = ({ signOut }) => {
   const [notes, setNotes] = useState([]);
 
 /*   const App = ({ signOut }) => {
-    const [packages, setPackages] = useState([]); */
+    const [bundles, setBundles] = useState([]); */
 
   useEffect(() => {
     fetchNotes();
   }, []);
 
 /*   useEffect(() => {
-    fetchPackages();
+    fetchBundles();
   }, []); */
 
   async function fetchNotes() {
@@ -52,10 +52,10 @@ const App = ({ signOut }) => {
     setNotes(notesFromAPI);
   }
 
-/*   async function fetchPackages() {
-    const apiData = await API.graphql({ query: listPackages });
-    const packagesFromAPI = apiData.data.listPackages.items;
-    setPackages(packagesFromAPI);
+/*   async function fetchBundles() {
+    const apiData = await API.graphql({ query: listBundles });
+    const bundlesFromAPI = apiData.data.listBundles.items;
+    setBundles(bundlesFromAPI);
   } */
 
   async function createNote(event) {
@@ -76,18 +76,19 @@ const App = ({ signOut }) => {
     event.target.reset();
   }
 
-/*   async function createPackage(event) {
+/*   async function createBundle(event) {
     event.preventDefault();
     const form = new FormData(event.target);
     const data = {
       name: form.get("name"),
       size: form.get("size"),
+      //cost
     };
     await API.graphql({
-      query: createPackageMutation,
+      query: createBundleMutation,
       variables: { input: data },
     });
-    fetchPackages();
+    fetchBundles();
     event.target.reset();
   } */
 
@@ -101,11 +102,11 @@ const App = ({ signOut }) => {
     });
   }
 
-/*   async function deletePackage({ id }) {
-    const newPackages = packages.filter((package) => package.id !== id);
-    setPackages(newPackages);
+/*   async function deleteBundle({ id }) {
+    const newBundles = bundles.filter((bundle) => bundle.id !== id);
+    setBundles(newBundles);
     await API.graphql({
-      query: deletePackageMutation,
+      query: deleteBundleMutation,
       variables: { input: { id } },
     });
   } */
@@ -176,44 +177,44 @@ const App = ({ signOut }) => {
 /* 
   return (
     <View className="App">
-      <Heading level={1}>My Packages App</Heading>
-      <View as="form" margin="3rem 0" onSubmit={createPackage}>
+      <Heading level={1}>My Bundles App</Heading>
+      <View as="form" margin="3rem 0" onSubmit={createBundle}>
         <Flex direction="row" justifyContent="center">
           <TextField
             name="name"
-            placeholder="Package Name"
-            label="Package Name"
+            placeholder="Bundle Name"
+            label="Bundle Name"
             labelHidden
             variation="quiet"
             required
           />
           <TextField
             name="size"
-            placeholder="Package Size"
-            label="Package Size"
+            placeholder="Bundle Size"
+            label="Bundle Size"
             labelHidden
             variation="quiet"
           />
           <Button type="submit" variation="primary">
-            Create Package
+            Create Bundle
           </Button>
         </Flex>
       </View>
-      <Heading level={2}>Current Packages</Heading>
+      <Heading level={2}>Current Bundles</Heading>
       <View margin="3rem 0">
-        {packages.map((package) => (
+        {bundles.map((bundle) => (
           <Flex
-            key={package.id || package.name}
+            key={bundle.id || bundle.name}
             direction="row"
             justifyContent="center"
             alignItems="center"
           >
             <Text as="strong" fontWeight={700}>
-              {package.name}
+              {bundle.name}
             </Text>
-            <Text as="span">{package.size}</Text>
-            <Button variation="link" onClick={() => deletePackage(package)}>
-              Delete package
+            <Text as="span">{bundle.size}</Text>
+            <Button variation="link" onClick={() => deleteBundle(bundle)}>
+              Delete Bundle
             </Button>
           </Flex>
         ))}
