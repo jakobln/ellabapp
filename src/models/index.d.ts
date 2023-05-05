@@ -15,6 +15,7 @@ type EagerBundle = {
   readonly name?: string | null;
   readonly size?: string | null;
   readonly cost?: number | null;
+  readonly image?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -28,6 +29,7 @@ type LazyBundle = {
   readonly name?: string | null;
   readonly size?: string | null;
   readonly cost?: number | null;
+  readonly image?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

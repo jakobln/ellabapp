@@ -11,6 +11,7 @@ export const createBundle = /* GraphQL */ `
       name
       size
       cost
+      image
       createdAt
       updatedAt
       _version
@@ -29,6 +30,7 @@ export const updateBundle = /* GraphQL */ `
       name
       size
       cost
+      image
       createdAt
       updatedAt
       _version
@@ -47,6 +49,7 @@ export const deleteBundle = /* GraphQL */ `
       name
       size
       cost
+      image
       createdAt
       updatedAt
       _version
