@@ -12,32 +12,32 @@ import {
   View,
   withAuthenticator,
 } from '@aws-amplify/ui-react';
-import { listNotes } from "./graphql/queries";
+/* import { listNotes } from "./graphql/queries";
 import {
   createNote as createNoteMutation,
   deleteNote as deleteNoteMutation,
-} from "./graphql/mutations";
-/* import { listBundles } from "./graphql/queries";
+} from "./graphql/mutations"; */
+import { listBundles } from "./graphql/queries";
 import {
   createBundle as createBundleMutation,
   deleteBundle as deleteBundleMutation,
-} from "./graphql/mutations"; */
+} from "./graphql/mutations";
 
-const App = ({ signOut }) => {
-  const [notes, setNotes] = useState([]);
+/* const App = ({ signOut }) => {
+  const [notes, setNotes] = useState([]); */
 
-/*   const App = ({ signOut }) => {
-    const [bundles, setBundles] = useState([]); */
-
-  useEffect(() => {
-    fetchNotes();
-  }, []);
+  const App = ({ signOut }) => {
+    const [bundles, setBundles] = useState([]);
 
 /*   useEffect(() => {
-    fetchBundles();
+    fetchNotes();
   }, []); */
 
-  async function fetchNotes() {
+  useEffect(() => {
+    fetchBundles();
+  }, []);
+
+/*   async function fetchNotes() {
     const apiData = await API.graphql({ query: listNotes });
     const notesFromAPI = apiData.data.listNotes.items;
     await Promise.all(
@@ -50,15 +50,15 @@ const App = ({ signOut }) => {
       })
     );
     setNotes(notesFromAPI);
-  }
+  } */
 
-/*   async function fetchBundles() {
+  async function fetchBundles() {
     const apiData = await API.graphql({ query: listBundles });
     const bundlesFromAPI = apiData.data.listBundles.items;
     setBundles(bundlesFromAPI);
-  } */
+  }
 
-  async function createNote(event) {
+/*   async function createNote(event) {
     event.preventDefault();
     const form = new FormData(event.target);
     const image = form.get("image");
@@ -74,9 +74,9 @@ const App = ({ signOut }) => {
     });
     fetchNotes();
     event.target.reset();
-  }
+  } */
 
-/*   async function createBundle(event) {
+  async function createBundle(event) {
     event.preventDefault();
     const form = new FormData(event.target);
     const data = {
@@ -90,9 +90,9 @@ const App = ({ signOut }) => {
     });
     fetchBundles();
     event.target.reset();
-  } */
+  }
 
-  async function deleteNote({ id, name }) {
+/*   async function deleteNote({ id, name }) {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
     await Storage.remove(name);
@@ -100,18 +100,18 @@ const App = ({ signOut }) => {
       query: deleteNoteMutation,
       variables: { input: { id } },
     });
-  }
+  } */
 
-/*   async function deleteBundle({ id }) {
+  async function deleteBundle({ id }) {
     const newBundles = bundles.filter((bundle) => bundle.id !== id);
     setBundles(newBundles);
     await API.graphql({
       query: deleteBundleMutation,
       variables: { input: { id } },
     });
-  } */
+  }
 
-  return (
+/*   return (
     <View className="App">
       <Heading level={1}>My Notes App</Heading>
       <View as="form" margin="3rem 0" onSubmit={createNote}>
@@ -172,9 +172,9 @@ const App = ({ signOut }) => {
       <Button onClick={signOut}>Sign Out</Button>
     </View>
   );
-};
+}; */
 
-/* 
+
   return (
     <View className="App">
       <Heading level={1}>My Bundles App</Heading>
@@ -222,6 +222,6 @@ const App = ({ signOut }) => {
       <Button onClick={signOut}>Sign Out</Button>
     </View>
   );
-}; */
+};
 
 export default withAuthenticator(App);
