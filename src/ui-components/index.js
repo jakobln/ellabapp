@@ -34,6 +34,7 @@ export { default as Features2x3 } from "./Features2x3";
 export { default as ItemCard } from "./ItemCard";
 export { default as NavBar } from "./NavBar";
 export { default as EditProfile } from "./EditProfile";
+export { default as EllabComponent2Collection } from "./EllabComponent2Collection";
 export { default as ProductCard } from "./ProductCard";
 export { default as studioTheme } from "./studioTheme";
 export { default as BundleCreateForm } from "./BundleCreateForm";

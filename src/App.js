@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import "@aws-amplify/ui-react/styles.css";
-import { API, Storage } from 'aws-amplify';
+import { API, Amplify, Storage } from 'aws-amplify';
 import {
   Button,
   Flex,
@@ -22,6 +22,10 @@ import {
   createBundle as createBundleMutation,
   deleteBundle as deleteBundleMutation,
 } from "./graphql/mutations";
+import {
+  EllabComponent2,
+  EllabComponent2Collection,
+} from './ui-components';
 
 /* const App = ({ signOut }) => {
   const [notes, setNotes] = useState([]); */
@@ -293,6 +297,10 @@ const App = ({ signOut }) => {
             </Button>
           </Flex>
         ))}
+        <Heading level={3}>Component</Heading>
+        <View margin="3rem 0">
+          <EllabComponent2Collection />
+        </View>
       </View>
       <Button onClick={signOut}>Sign Out</Button>
     </View>

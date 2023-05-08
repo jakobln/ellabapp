@@ -130,7 +130,7 @@ export default function EllabComponent2(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          children={`${"Price: $"}${bundle?.cost}`}
+          children={`${"$"}${bundle?.cost}`}
           {...getOverrideProps(overrides, "$99 USD")}
         ></Text>
         <Button
