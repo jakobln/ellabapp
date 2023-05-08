@@ -8,6 +8,7 @@ export { default as CommentCard } from "./CommentCard";
 export { default as MyIcon } from "./MyIcon";
 export { default as ReviewCard } from "./ReviewCard";
 export { default as HeroLayout3 } from "./HeroLayout3";
+export { default as EllabComponent2 } from "./EllabComponent2";
 export { default as HeroLayout1 } from "./HeroLayout1";
 export { default as HeroLayout4 } from "./HeroLayout4";
 export { default as ContactUs } from "./ContactUs";

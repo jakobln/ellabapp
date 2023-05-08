@@ -9,7 +9,7 @@ import * as React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Button, Divider, Flex, Icon, Text, View } from "@aws-amplify/ui-react";
 export default function EllabComponent(props) {
-  const { overrides, ...rest } = props;
+  const { bundle, overrides, ...rest } = props;
   return (
     <Flex
       gap="24px"
@@ -73,7 +73,7 @@ export default function EllabComponent(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="Free"
+            children={bundle?.size}
             {...getOverrideProps(overrides, "Free")}
           ></Text>
           <Text
@@ -95,7 +95,7 @@ export default function EllabComponent(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="$0/mo"
+            children={`${"Price: $"}${bundle?.cost}`}
             {...getOverrideProps(overrides, "$0/mo")}
           ></Text>
           <Button
@@ -398,7 +398,7 @@ export default function EllabComponent(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="Premium"
+            children={bundle?.size}
             {...getOverrideProps(overrides, "Premium")}
           ></Text>
           <Text
@@ -420,7 +420,7 @@ export default function EllabComponent(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="$100/mo"
+            children={`${"Price: $"}${bundle?.cost}`}
             {...getOverrideProps(overrides, "$100/mo")}
           ></Text>
           <Button
@@ -723,7 +723,7 @@ export default function EllabComponent(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="Enterprise"
+            children={bundle?.size}
             {...getOverrideProps(overrides, "Enterprise")}
           ></Text>
           <Text
@@ -745,7 +745,7 @@ export default function EllabComponent(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="Contact us"
+            children={`${"Price: $"}${bundle?.cost}`}
             {...getOverrideProps(overrides, "Contact us")}
           ></Text>
           <Button

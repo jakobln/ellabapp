@@ -5,6 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
+import { Bundle } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { ButtonProps, DividerProps, FlexProps, IconProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
@@ -64,6 +65,8 @@ export declare type EllabComponentOverridesProps = {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.36582999"?: PrimitiveOverrideProps<TextProps>;
 } & EscapeHatchProps;
 export declare type EllabComponentProps = React.PropsWithChildren<Partial<FlexProps> & {
+    bundle?: Bundle;
+} & {
     overrides?: EllabComponentOverridesProps | undefined | null;
 }>;
 export default function EllabComponent(props: EllabComponentProps): React.ReactElement;

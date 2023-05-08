@@ -26,21 +26,25 @@ export default function BundleCreateForm(props) {
     name: "",
     size: "",
     cost: "",
+    image: "",
   };
   const [name, setName] = React.useState(initialValues.name);
   const [size, setSize] = React.useState(initialValues.size);
   const [cost, setCost] = React.useState(initialValues.cost);
+  const [image, setImage] = React.useState(initialValues.image);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setName(initialValues.name);
     setSize(initialValues.size);
     setCost(initialValues.cost);
+    setImage(initialValues.image);
     setErrors({});
   };
   const validations = {
     name: [],
     size: [],
     cost: [],
+    image: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -71,6 +75,7 @@ export default function BundleCreateForm(props) {
           name,
           size,
           cost,
+          image,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -128,6 +133,7 @@ export default function BundleCreateForm(props) {
               name: value,
               size,
               cost,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -154,6 +160,7 @@ export default function BundleCreateForm(props) {
               name,
               size: value,
               cost,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.size ?? value;
@@ -184,6 +191,7 @@ export default function BundleCreateForm(props) {
               name,
               size,
               cost: value,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.cost ?? value;
@@ -197,6 +205,33 @@ export default function BundleCreateForm(props) {
         errorMessage={errors.cost?.errorMessage}
         hasError={errors.cost?.hasError}
         {...getOverrideProps(overrides, "cost")}
+      ></TextField>
+      <TextField
+        label="Image"
+        isRequired={false}
+        isReadOnly={false}
+        value={image}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              size,
+              cost,
+              image: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.image ?? value;
+          }
+          if (errors.image?.hasError) {
+            runValidationTasks("image", value);
+          }
+          setImage(value);
+        }}
+        onBlur={() => runValidationTasks("image", image)}
+        errorMessage={errors.image?.errorMessage}
+        hasError={errors.image?.hasError}
+        {...getOverrideProps(overrides, "image")}
       ></TextField>
       <Flex
         justifyContent="space-between"
