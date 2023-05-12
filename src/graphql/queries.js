@@ -9,6 +9,7 @@ export const getBundle = /* GraphQL */ `
       size
       cost
       image
+      launchnowurl
       createdAt
       updatedAt
       _version
@@ -30,6 +31,7 @@ export const listBundles = /* GraphQL */ `
         size
         cost
         image
+        launchnowurl
         createdAt
         updatedAt
         _version
@@ -60,6 +62,7 @@ export const syncBundles = /* GraphQL */ `
         size
         cost
         image
+        launchnowurl
         createdAt
         updatedAt
         _version
