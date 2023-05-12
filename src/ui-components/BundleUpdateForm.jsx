@@ -14,7 +14,7 @@ import { DataStore } from "aws-amplify";
 export default function BundleUpdateForm(props) {
   const {
     id: idProp,
-    bundle,
+    bundle: bundleModelProp,
     onSuccess,
     onError,
     onSubmit,
@@ -49,14 +49,16 @@ export default function BundleUpdateForm(props) {
     setLaunchnowurl(cleanValues.launchnowurl);
     setErrors({});
   };
-  const [bundleRecord, setBundleRecord] = React.useState(bundle);
+  const [bundleRecord, setBundleRecord] = React.useState(bundleModelProp);
   React.useEffect(() => {
     const queryData = async () => {
-      const record = idProp ? await DataStore.query(Bundle, idProp) : bundle;
+      const record = idProp
+        ? await DataStore.query(Bundle, idProp)
+        : bundleModelProp;
       setBundleRecord(record);
     };
     queryData();
-  }, [idProp, bundle]);
+  }, [idProp, bundleModelProp]);
   React.useEffect(resetStateValues, [bundleRecord]);
   const validations = {
     name: [],
@@ -297,7 +299,7 @@ export default function BundleUpdateForm(props) {
             event.preventDefault();
             resetStateValues();
           }}
-          isDisabled={!(idProp || bundle)}
+          isDisabled={!(idProp || bundleModelProp)}
           {...getOverrideProps(overrides, "ResetButton")}
         ></Button>
         <Flex
@@ -309,7 +311,7 @@ export default function BundleUpdateForm(props) {
             type="submit"
             variation="primary"
             isDisabled={
-              !(idProp || bundle) ||
+              !(idProp || bundleModelProp) ||
               Object.values(errors).some((e) => e?.hasError)
             }
             {...getOverrideProps(overrides, "SubmitButton")}

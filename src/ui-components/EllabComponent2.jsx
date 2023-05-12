@@ -6,10 +6,18 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import {
+  getOverrideProps,
+  useNavigateAction,
+} from "@aws-amplify/ui-react/internal";
 import { Button, Flex, Image, Text } from "@aws-amplify/ui-react";
 export default function EllabComponent2(props) {
   const { bundle, overrides, ...rest } = props;
+  const buttonOnClick = useNavigateAction({
+    type: "url",
+    url: bundle?.launchnowurl,
+    target: "_blank",
+  });
   return (
     <Flex
       gap="0"
@@ -142,6 +150,9 @@ export default function EllabComponent2(props) {
           isDisabled={false}
           variation="primary"
           children="Primary Button"
+          onClick={() => {
+            buttonOnClick();
+          }}
           {...getOverrideProps(overrides, "Button")}
         ></Button>
       </Flex>

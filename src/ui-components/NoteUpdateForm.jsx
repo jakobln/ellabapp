@@ -14,7 +14,7 @@ import { DataStore } from "aws-amplify";
 export default function NoteUpdateForm(props) {
   const {
     id: idProp,
-    note,
+    note: noteModelProp,
     onSuccess,
     onError,
     onSubmit,
@@ -43,14 +43,16 @@ export default function NoteUpdateForm(props) {
     setImage(cleanValues.image);
     setErrors({});
   };
-  const [noteRecord, setNoteRecord] = React.useState(note);
+  const [noteRecord, setNoteRecord] = React.useState(noteModelProp);
   React.useEffect(() => {
     const queryData = async () => {
-      const record = idProp ? await DataStore.query(Note, idProp) : note;
+      const record = idProp
+        ? await DataStore.query(Note, idProp)
+        : noteModelProp;
       setNoteRecord(record);
     };
     queryData();
-  }, [idProp, note]);
+  }, [idProp, noteModelProp]);
   React.useEffect(resetStateValues, [noteRecord]);
   const validations = {
     name: [{ type: "Required" }],
@@ -221,7 +223,7 @@ export default function NoteUpdateForm(props) {
             event.preventDefault();
             resetStateValues();
           }}
-          isDisabled={!(idProp || note)}
+          isDisabled={!(idProp || noteModelProp)}
           {...getOverrideProps(overrides, "ResetButton")}
         ></Button>
         <Flex
@@ -233,7 +235,7 @@ export default function NoteUpdateForm(props) {
             type="submit"
             variation="primary"
             isDisabled={
-              !(idProp || note) ||
+              !(idProp || noteModelProp) ||
               Object.values(errors).some((e) => e?.hasError)
             }
             {...getOverrideProps(overrides, "SubmitButton")}
