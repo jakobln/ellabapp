@@ -17,12 +17,14 @@ export declare type BundleCreateFormInputValues = {
     size?: string;
     cost?: number;
     image?: string;
+    launchnowurl?: string;
 };
 export declare type BundleCreateFormValidationValues = {
     name?: ValidationFunction<string>;
     size?: ValidationFunction<string>;
     cost?: ValidationFunction<number>;
     image?: ValidationFunction<string>;
+    launchnowurl?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type BundleCreateFormOverridesProps = {
@@ -31,6 +33,7 @@ export declare type BundleCreateFormOverridesProps = {
     size?: PrimitiveOverrideProps<TextFieldProps>;
     cost?: PrimitiveOverrideProps<TextFieldProps>;
     image?: PrimitiveOverrideProps<TextFieldProps>;
+    launchnowurl?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type BundleCreateFormProps = React.PropsWithChildren<{
     overrides?: BundleCreateFormOverridesProps | undefined | null;

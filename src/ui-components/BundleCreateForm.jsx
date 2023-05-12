@@ -27,17 +27,22 @@ export default function BundleCreateForm(props) {
     size: "",
     cost: "",
     image: "",
+    launchnowurl: "",
   };
   const [name, setName] = React.useState(initialValues.name);
   const [size, setSize] = React.useState(initialValues.size);
   const [cost, setCost] = React.useState(initialValues.cost);
   const [image, setImage] = React.useState(initialValues.image);
+  const [launchnowurl, setLaunchnowurl] = React.useState(
+    initialValues.launchnowurl
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setName(initialValues.name);
     setSize(initialValues.size);
     setCost(initialValues.cost);
     setImage(initialValues.image);
+    setLaunchnowurl(initialValues.launchnowurl);
     setErrors({});
   };
   const validations = {
@@ -45,6 +50,7 @@ export default function BundleCreateForm(props) {
     size: [],
     cost: [],
     image: [],
+    launchnowurl: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -76,6 +82,7 @@ export default function BundleCreateForm(props) {
           size,
           cost,
           image,
+          launchnowurl,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -134,6 +141,7 @@ export default function BundleCreateForm(props) {
               size,
               cost,
               image,
+              launchnowurl,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -161,6 +169,7 @@ export default function BundleCreateForm(props) {
               size: value,
               cost,
               image,
+              launchnowurl,
             };
             const result = onChange(modelFields);
             value = result?.size ?? value;
@@ -192,6 +201,7 @@ export default function BundleCreateForm(props) {
               size,
               cost: value,
               image,
+              launchnowurl,
             };
             const result = onChange(modelFields);
             value = result?.cost ?? value;
@@ -219,6 +229,7 @@ export default function BundleCreateForm(props) {
               size,
               cost,
               image: value,
+              launchnowurl,
             };
             const result = onChange(modelFields);
             value = result?.image ?? value;
@@ -232,6 +243,34 @@ export default function BundleCreateForm(props) {
         errorMessage={errors.image?.errorMessage}
         hasError={errors.image?.hasError}
         {...getOverrideProps(overrides, "image")}
+      ></TextField>
+      <TextField
+        label="Launchnowurl"
+        isRequired={false}
+        isReadOnly={false}
+        value={launchnowurl}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              size,
+              cost,
+              image,
+              launchnowurl: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.launchnowurl ?? value;
+          }
+          if (errors.launchnowurl?.hasError) {
+            runValidationTasks("launchnowurl", value);
+          }
+          setLaunchnowurl(value);
+        }}
+        onBlur={() => runValidationTasks("launchnowurl", launchnowurl)}
+        errorMessage={errors.launchnowurl?.errorMessage}
+        hasError={errors.launchnowurl?.hasError}
+        {...getOverrideProps(overrides, "launchnowurl")}
       ></TextField>
       <Flex
         justifyContent="space-between"
