@@ -7,6 +7,7 @@
 /* eslint-disable */
 import * as React from "react";
 import { Bundle } from "../models";
+import { SortDirection } from "@aws-amplify/datastore";
 import {
   getOverrideProps,
   useDataStoreBinding,
@@ -15,10 +16,12 @@ import EllabComponent2 from "./EllabComponent2";
 import { Collection } from "@aws-amplify/ui-react";
 export default function EllabComponent2Collection(props) {
   const { items: itemsProp, overrideItems, overrides, ...rest } = props;
+  const itemsPagination = { sort: (s) => s.cost(SortDirection.ASCENDING) };
   const [items, setItems] = React.useState(undefined);
   const itemsDataStore = useDataStoreBinding({
     type: "collection",
     model: Bundle,
+    pagination: itemsPagination,
   }).items;
   React.useEffect(() => {
     if (itemsProp !== undefined) {
